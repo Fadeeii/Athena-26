@@ -1,0 +1,108 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Bell, Sparkles, Send, CheckCircle2 } from "lucide-react";
+
+export default function ComingSoon() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      setSubmitted(true);
+      setEmail("");
+    }
+  };
+
+  const upcomingUpdates = [
+    { title: "Detailed Speaker Reveal", date: "Coming Early July" },
+    { title: "Detailed Agenda & Timeline", date: "Coming Mid July" },
+    { title: "Technical Tools & Prerequisites", date: "Coming Mid July" },
+  ];
+
+  return (
+    <section className="py-24 relative overflow-hidden bg-[#f8fafc]/40">
+      {/* Glow effects */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-athena-purple/5 blur-[120px] pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="glass p-8 sm:p-16 rounded-3xl border border-slate-200 bg-white/50 relative overflow-hidden shadow-sm"
+        >
+          {/* Top subtle visual accent */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-athena-blue via-athena-purple to-athena-pink" />
+
+          {/* Heading */}
+          <div className="flex items-center justify-center space-x-2.5 mb-6">
+            <Sparkles className="w-5 h-5 text-athena-blue animate-pulse" />
+            <span className="font-sans text-xs sm:text-sm font-bold tracking-widest text-athena-blue uppercase">
+              Updates & Reveals
+            </span>
+          </div>
+
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 tracking-tight mb-4">
+            More Announcements Coming Soon!
+          </h2>
+
+          <p className="font-sans text-slate-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-10">
+            We are working hard to curate the finest experience. Stay tuned for speaker bios, detailed timelines, and special announcements.
+          </p>
+
+          {/* Upcoming Items List */}
+          <div className="grid sm:grid-cols-3 gap-6 mb-12 text-left">
+            {upcomingUpdates.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white/70 border border-slate-200/60 rounded-2xl p-6 hover:border-athena-blue/20 hover:shadow-md transition-all duration-300 shadow-sm"
+              >
+                <div className="w-2.5 h-2.5 rounded-full bg-athena-purple mb-4 animate-pulse" />
+                <h4 className="font-display font-bold text-sm text-slate-800 mb-1.5">
+                  {item.title}
+                </h4>
+                <span className="font-sans text-xs text-slate-500 tracking-wider">
+                  {item.date}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Subscription Box */}
+          <div className="max-w-md mx-auto">
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="inline-flex items-center space-x-2.5 px-6 py-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 text-sm font-sans"
+              >
+                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                <span>You're on the list! We will notify you of updates.</span>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-grow px-5 py-4 rounded-xl bg-white border border-slate-300 text-slate-800 focus:border-athena-blue/50 focus:outline-none font-sans text-sm placeholder:text-slate-400 transition-colors duration-200"
+                />
+                <button
+                  type="submit"
+                  className="sm:w-auto px-6 py-4 rounded-xl bg-gradient-to-r from-athena-blue to-athena-purple hover:opacity-95 text-white font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105 active:scale-95"
+                >
+                  <Bell className="w-4 h-4" />
+                  <span>Notify Me</span>
+                </button>
+              </form>
+            )}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
