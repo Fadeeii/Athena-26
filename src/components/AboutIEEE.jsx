@@ -46,7 +46,7 @@ export default function AboutIEEE() {
             transition={{ duration: 0.8 }}
           >
             <span className="font-display font-bold text-xs sm:text-sm text-athena-blue tracking-widest uppercase mb-3 block">
-              Pioneering Tech Excellence
+              Innovative Tech Excellence
             </span>
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 tracking-tight leading-tight mb-6">
               About IEEE Malabar Subsection

@@ -35,10 +35,10 @@ export default function Footer() {
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-athena-pink/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
+
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-          
+
           {/* Brand/About */}
           <div className="md:col-span-5 text-left">
             <div className="flex items-center space-x-2.5 mb-6">
@@ -50,7 +50,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="font-sans text-slate-500 text-sm leading-relaxed mb-6 max-w-sm">
-              The premier SHE Camp organized by IEEE WIE AG Malabar Subsection. Promoting technical excellence, professional mentorship, leadership growth, and creative confidence in women.
+              The first ever SHE Camp organized by WIE AG IEEE Malabar Subsection. Promoting technical excellence, professional mentorship, leadership growth, and creative confidence in women.
             </p>
             <div className="flex space-x-4">
               <a
@@ -105,7 +105,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#ieee-malabar" className="hover:text-slate-900 transition-colors duration-200">
-                  About IEEE Malabar
+                  About IEEE Malabar Subsection
                 </a>
               </li>
               <li>
@@ -146,7 +146,7 @@ export default function Footer() {
                 <div>
                   <span className="block text-xs text-slate-400 uppercase">Phone</span>
                   <a href="tel:+910000000000" className="hover:text-slate-900 transition-colors duration-200 font-medium">
-                    +91 98765 43210
+                    +91 81389 23435
                   </a>
                 </div>
               </li>
@@ -174,7 +174,7 @@ export default function Footer() {
           <div className="text-left font-sans text-xs text-slate-400">
             &copy; {new Date().getFullYear()} ATHENA 2026. All rights reserved. Organized by WIE AG IEEE Malabar Subsection.
           </div>
-          
+
           <button
             onClick={scrollToTop}
             className="w-10 h-10 rounded-full bg-white hover:bg-slate-50 flex items-center justify-center border border-slate-200 hover:border-athena-blue/40 text-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1"
