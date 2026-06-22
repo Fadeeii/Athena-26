@@ -5,60 +5,60 @@ import { Cpu, Palette, Shield, MessageSquare, Volume2, Film, Music, Glasses } fr
 export default function Events() {
   const events = [
     {
-      icon: <Cpu className="w-6 h-6 text-sky-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <Cpu className="w-6 h-6 text-athena-pink group-hover:text-white transition-colors duration-300" />,
       title: "Technical Workshop",
       desc: "Learn emerging frameworks and code with hands-on labs led by tech experts.",
       tag: "Tech",
-      colorClass: "bg-sky-50/95 border-sky-100/60 hover:from-sky-500 hover:to-sky-600 hover:shadow-sky-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-crimson/50 hover:to-athena-maroon/65 hover:shadow-athena-crimson/20 hover:border-athena-pink/30",
     },
     {
-      icon: <Palette className="w-6 h-6 text-pink-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <Palette className="w-6 h-6 text-athena-gold group-hover:text-white transition-colors duration-300" />,
       title: "Creative Art Workshop",
       desc: "Unleash your aesthetic expressions and craft beautiful tactile and digital designs.",
       tag: "Creative",
-      colorClass: "bg-pink-55/95 border-pink-100/60 hover:from-pink-500 hover:to-pink-600 hover:shadow-pink-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-maroon/50 hover:to-athena-wine/65 hover:shadow-athena-maroon/20 hover:border-athena-pink/30",
     },
     {
-      icon: <Shield className="w-6 h-6 text-emerald-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <Shield className="w-6 h-6 text-athena-pink group-hover:text-white transition-colors duration-300" />,
       title: "Self Defence Session",
       desc: "Equip yourself with practical, empowering self-protection techniques and safety skills.",
       tag: "Empowerment",
-      colorClass: "bg-emerald-50/95 border-emerald-100/60 hover:from-emerald-500 hover:to-emerald-600 hover:shadow-emerald-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-crimson/50 hover:to-athena-wine/65 hover:shadow-athena-crimson/20 hover:border-athena-pink/30",
     },
     {
-      icon: <Volume2 className="w-6 h-6 text-purple-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <Volume2 className="w-6 h-6 text-athena-gold group-hover:text-white transition-colors duration-300" />,
       title: "Talk Session",
       desc: "Engage with prominent women leaders who share stories of resilience, rise and impact.",
       tag: "Inspire",
-      colorClass: "bg-purple-50/95 border-purple-100/60 hover:from-purple-500 hover:to-purple-600 hover:shadow-purple-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-wine/50 hover:to-athena-maroon/65 hover:shadow-athena-maroon/20 hover:border-athena-pink/30",
     },
     {
-      icon: <MessageSquare className="w-6 h-6 text-amber-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <MessageSquare className="w-6 h-6 text-athena-pink group-hover:text-white transition-colors duration-300" />,
       title: "Panel Discussion",
       desc: "Interactive forums tackling diversity, careers in STEM, and technology for social good.",
       tag: "Interactive",
-      colorClass: "bg-amber-50/95 border-amber-100/60 hover:from-amber-500 hover:to-amber-600 hover:shadow-amber-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-crimson/50 hover:to-athena-maroon/65 hover:shadow-athena-crimson/20 hover:border-athena-pink/30",
     },
     {
-      icon: <Glasses className="w-6 h-6 text-rose-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <Glasses className="w-6 h-6 text-athena-gold group-hover:text-white transition-colors duration-300" />,
       title: "Saree Party",
       desc: "A fun and elegant evening celebrating grace, traditions, culture and togetherness.",
       tag: "Social",
-      colorClass: "bg-rose-50/95 border-rose-100/60 hover:from-rose-500 hover:to-rose-600 hover:shadow-rose-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-maroon/50 hover:to-athena-wine/65 hover:shadow-athena-maroon/20 hover:border-athena-pink/30",
     },
     {
-      icon: <Film className="w-6 h-6 text-cyan-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <Film className="w-6 h-6 text-athena-pink group-hover:text-white transition-colors duration-300" />,
       title: "Movie Screening",
       desc: "Sit back and enjoy inspiring stories that celebrate female triumph and determination.",
       tag: "Entertainment",
-      colorClass: "bg-cyan-55/95 border-cyan-100/60 hover:from-cyan-500 hover:to-cyan-650 hover:shadow-cyan-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-crimson/50 hover:to-athena-wine/65 hover:shadow-athena-crimson/20 hover:border-athena-pink/30",
     },
     {
-      icon: <Music className="w-6 h-6 text-indigo-650 group-hover:text-white transition-colors duration-300" />,
+      icon: <Music className="w-6 h-6 text-athena-gold group-hover:text-white transition-colors duration-300" />,
       title: "Cultural Night",
       desc: "A stunning showcase of dance, music, drama, and artistic performances by attendees.",
       tag: "Celebration",
-      colorClass: "bg-indigo-50/95 border-indigo-100/60 hover:from-indigo-500 hover:to-indigo-600 hover:shadow-indigo-500/20",
+      colorClass: "bg-red-950/15 border-red-950/50 hover:from-athena-wine/50 hover:to-athena-maroon/65 hover:shadow-athena-maroon/20 hover:border-athena-pink/30",
     },
   ];
 
@@ -84,21 +84,21 @@ export default function Events() {
   return (
     <section id="events" className="py-24 relative overflow-hidden bg-transparent">
       {/* Background glow blobs */}
-      <div className="absolute top-[30%] right-[-15%] w-96 h-96 rounded-full bg-athena-pink/10 blur-[110px] pointer-events-none" />
-      <div className="absolute bottom-[30%] left-[-15%] w-96 h-96 rounded-full bg-athena-blue/10 blur-[110px] pointer-events-none" />
+      <div className="absolute top-[30%] right-[-15%] w-96 h-96 rounded-full bg-athena-crimson/8 blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-[30%] left-[-15%] w-96 h-96 rounded-full bg-athena-wine/10 blur-[110px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-display font-bold text-xs sm:text-sm text-athena-purple tracking-widest uppercase mb-3 block">
+          <span className="font-display font-bold text-xs sm:text-sm text-athena-pink tracking-widest uppercase mb-3 block">
             Camp Highlights
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 tracking-tight mb-4">
+          <h2 className="font-luxury font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-4">
             Explore Events & Activities
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-athena-blue to-athena-pink mx-auto rounded-full mb-6" />
-          <p className="font-sans text-slate-500 text-sm sm:text-base leading-relaxed">
+          <div className="w-16 h-1 bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold mx-auto rounded-full mb-6" />
+          <p className="font-sans text-slate-400 text-sm sm:text-base leading-relaxed">
             ATHENA 2026 has a diverse itinerary crafted to spark innovation, foster life skills, and celebrate culture. Dive into the modules below.
           </p>
         </div>
@@ -117,29 +117,29 @@ export default function Events() {
               variants={cardVariants}
               whileHover={{
                 y: -8,
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                backgroundColor: "rgba(76, 5, 25, 0.2)",
               }}
-              className={`p-6 sm:p-8 rounded-2xl border flex flex-col justify-between text-left group transition-all duration-500 hover:bg-gradient-to-br hover:text-white hover:shadow-2xl cursor-pointer ${ev.colorClass}`}
+              className={`p-6 sm:p-8 rounded-2xl border flex flex-col justify-between text-left group transition-all duration-550 hover:bg-gradient-to-br hover:text-white hover:shadow-2xl cursor-pointer ${ev.colorClass}`}
             >
               <div>
                 {/* Header Row */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 group-hover:bg-white/10 border border-slate-100/50 shadow-sm shadow-slate-100/50 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-red-950/40 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/10 border border-red-900/30 shadow-sm shadow-black/10 transition-all duration-300">
                     {ev.icon}
                   </div>
-                  <span className="font-sans font-bold text-[10px] tracking-widest text-slate-600 group-hover:text-white/90 uppercase bg-white/80 group-hover:bg-white/10 px-2.5 py-1 rounded-full border border-slate-200/50 group-hover:border-white/10">
+                  <span className="font-sans font-bold text-[10px] tracking-widest text-slate-350 group-hover:text-white/90 uppercase bg-red-950/30 group-hover:bg-white/10 px-2.5 py-1 rounded-full border border-red-950/40 group-hover:border-white/10">
                     {ev.tag}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display font-black text-lg text-slate-800 mb-3 group-hover:text-white transition-colors duration-300">
+                <h3 className="font-display font-black text-lg text-slate-100 mb-3 group-hover:text-white transition-colors duration-300">
                   {ev.title}
                 </h3>
               </div>
 
               {/* Description */}
-              <p className="font-sans text-slate-500 group-hover:text-white/80 text-xs sm:text-sm leading-relaxed mt-2 transition-colors duration-300">
+              <p className="font-sans text-slate-400 group-hover:text-white/95 text-xs sm:text-sm leading-relaxed mt-2 transition-colors duration-300 font-medium">
                 {ev.desc}
               </p>
             </motion.div>

@@ -21,9 +21,9 @@ export default function ComingSoon() {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-[#f8fafc]/40">
+    <section className="py-24 relative overflow-hidden bg-transparent">
       {/* Glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-athena-purple/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-athena-crimson/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
         <motion.div
@@ -31,24 +31,24 @@ export default function ComingSoon() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="glass p-8 sm:p-16 rounded-3xl border border-slate-200 bg-white/50 relative overflow-hidden shadow-sm"
+          className="glass p-8 sm:p-16 rounded-3xl border border-red-950/40 bg-red-950/15 relative overflow-hidden shadow-lg"
         >
           {/* Top subtle visual accent */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-athena-blue via-athena-purple to-athena-pink" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold" />
 
           {/* Heading */}
           <div className="flex items-center justify-center space-x-2.5 mb-6">
-            <Sparkles className="w-5 h-5 text-athena-blue animate-pulse" />
-            <span className="font-sans text-xs sm:text-sm font-bold tracking-widest text-athena-blue uppercase">
+            <Sparkles className="w-5 h-5 text-athena-pink animate-pulse" />
+            <span className="font-sans text-xs sm:text-sm font-bold tracking-widest text-athena-pink uppercase">
               Updates & Reveals
             </span>
           </div>
 
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 tracking-tight mb-4">
+          <h2 className="font-luxury font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-4">
             More Announcements Coming Soon!
           </h2>
 
-          <p className="font-sans text-slate-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-10">
+          <p className="font-sans text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-10 font-medium">
             We are working hard to curate the finest experience. Stay tuned for speaker bios, detailed timelines, and special announcements.
           </p>
 
@@ -57,13 +57,13 @@ export default function ComingSoon() {
             {upcomingUpdates.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white/70 border border-slate-200/60 rounded-2xl p-6 hover:border-athena-blue/20 hover:shadow-md transition-all duration-300 shadow-sm"
+                className="bg-red-950/20 border border-red-950/50 rounded-2xl p-6 hover:border-athena-pink/30 hover:shadow-md transition-all duration-300 shadow-md"
               >
-                <div className="w-2.5 h-2.5 rounded-full bg-athena-purple mb-4 animate-pulse" />
-                <h4 className="font-display font-bold text-sm text-slate-800 mb-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-athena-pink mb-4 animate-pulse" />
+                <h4 className="font-display font-bold text-sm text-slate-250 mb-1.5">
                   {item.title}
                 </h4>
-                <span className="font-sans text-xs text-slate-500 tracking-wider">
+                <span className="font-sans text-xs text-slate-400 font-semibold tracking-wider">
                   {item.date}
                 </span>
               </div>
@@ -76,7 +76,7 @@ export default function ComingSoon() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="inline-flex items-center space-x-2.5 px-6 py-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 text-sm font-sans"
+                className="inline-flex items-center space-x-2.5 px-6 py-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-sm font-sans"
               >
                 <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
                 <span>You're on the list! We will notify you of updates.</span>
@@ -89,11 +89,11 @@ export default function ComingSoon() {
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-grow px-5 py-4 rounded-xl bg-white border border-slate-300 text-slate-800 focus:border-athena-blue/50 focus:outline-none font-sans text-sm placeholder:text-slate-400 transition-colors duration-200"
+                  className="flex-grow px-5 py-4 rounded-xl bg-red-950/30 border border-red-950/60 text-slate-100 focus:border-athena-pink/50 focus:outline-none font-sans text-sm placeholder:text-slate-500 transition-colors duration-200"
                 />
                 <button
                   type="submit"
-                  className="sm:w-auto px-6 py-4 rounded-xl bg-gradient-to-r from-athena-blue to-athena-purple hover:opacity-95 text-white font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="sm:w-auto px-6 py-4 rounded-xl bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold hover:opacity-95 text-white font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-athena-crimson/15"
                 >
                   <Bell className="w-4 h-4" />
                   <span>Notify Me</span>

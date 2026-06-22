@@ -25,7 +25,10 @@ export default function App() {
       </AnimatePresence>
 
       {!loading && (
-        <div className="relative min-h-screen bg-gradient-mesh text-slate-900 selection:bg-athena-purple/10 selection:text-athena-purple">
+        <div className="relative min-h-screen bg-gradient-mesh text-slate-100 selection:bg-athena-purple/30 selection:text-athena-pink">
+          {/* Subtle noise grain texture */}
+          <div className="grain-overlay" />
+
           {/* Custom Trailing Mouse Glow */}
           <CursorEffect />
 
