@@ -44,7 +44,7 @@ export default function ComingSoon() {
             </span>
           </div>
 
-          <h2 className="font-luxury font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-4">
+          <h2 className="font-serif font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-4">
             More Announcements Coming Soon!
           </h2>
 

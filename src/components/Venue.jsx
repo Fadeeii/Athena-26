@@ -37,14 +37,14 @@ export default function Venue() {
           </div>
 
           {/* Heading */}
-          <h2 className="font-luxury font-bold text-3xl sm:text-5xl md:text-6xl text-slate-100 tracking-wide mb-4">
+          <h2 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-slate-100 tracking-wide mb-4">
             Government Engineering College
             <br />
             <span className="text-gradient-gold">Kozhikode</span>
           </h2>
 
           {/* Subtitle Quote */}
-          <p className="font-display font-bold text-lg sm:text-2xl text-athena-pink tracking-wider italic mb-8">
+          <p className="font-editorial font-medium text-lg sm:text-2xl text-athena-pink tracking-wider italic mb-8">
             "A place where ambition meets opportunity."
           </p>
 

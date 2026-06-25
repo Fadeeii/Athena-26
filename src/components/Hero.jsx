@@ -99,13 +99,13 @@ export default function Hero() {
             className="font-display text-6xl sm:text-8xl md:text-9xl tracking-tight leading-none mb-6 select-none"
           >
             <span className="font-luxury font-bold text-slate-100 drop-shadow-[0_2px_15px_rgba(220,38,38,0.2)]">ATHENA</span>{" "}
-            <span className="text-gradient-athena drop-shadow-[0_2px_20px_rgba(253,164,175,0.25)] font-display font-extrabold">2026</span>
+            <span className="text-gradient-athena drop-shadow-[0_2px_20px_rgba(253,164,175,0.25)] font-luxury font-bold">2026</span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="font-display font-black text-2xl sm:text-4xl md:text-5xl text-gradient-gold tracking-[0.2em] mb-10 max-w-3xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+            className="font-editorial italic font-medium text-3xl sm:text-4xl md:text-5xl text-gradient-gold tracking-[0.1em] mb-10 max-w-3xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
           >
             "Rise. Lead. Inspire."
           </motion.p>

@@ -45,11 +45,11 @@ export default function AboutIEEE() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-luxury font-extrabold text-3xl sm:text-5xl text-slate-100 tracking-wide leading-tight mb-6">
+            <h2 className="font-serif font-extrabold text-3xl sm:text-5xl text-slate-100 tracking-wide leading-tight mb-6">
               About IEEE Malabar Subsection
             </h2>
             <p className="font-sans text-slate-200 text-base sm:text-lg leading-relaxed mb-6 font-semibold">
-              IEEE Malabar Subsection, a prominent subunit of the IEEE Kerala Section, serves the northern districts of Kerala (Malabar region). It acts as a catalyst for professional growth and academic development in engineering and technology.
+              IEEE Malabar Subsection, the first subsection under Kerala Section has started functioning in Oct 2010, on the IEEE day. This subsection has been formed for better networking between professional members and student members of IEEE in the northern districts of Kerala. viz. Palakkad, Malappuram, Kozhikode, Wayanad, Kannur and Kasargod.
             </p>
             <p className="font-sans text-slate-400 text-sm sm:text-base leading-relaxed">
               By bringing together industry professionals, academicians, and student branches, the subsection hosts a series of initiatives that promote learning, mentoring, and community outreach.

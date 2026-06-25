@@ -15,7 +15,7 @@ const getInitialTargetDate = () => {
 
 export default function Tickets() {
   const targetTime = getInitialTargetDate();
-  
+
   // State for countdown timer
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -23,7 +23,7 @@ export default function Tickets() {
     minutes: 0,
     seconds: 0,
   });
-  
+
   const [isEarlyBirdClosed, setIsEarlyBirdClosed] = useState(false);
   const [isSimulatedExpired, setIsSimulatedExpired] = useState(false);
 
@@ -40,12 +40,12 @@ export default function Tickets() {
 
     const calculateTimeLeft = () => {
       const difference = targetTime - new Date().getTime();
-      
+
       if (difference <= 0) {
         setIsEarlyBirdClosed(true);
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
-      
+
       setIsEarlyBirdClosed(false);
       return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -79,7 +79,7 @@ export default function Tickets() {
     {
       name: "IEEE Early Bird Pass",
       tag: "IEEE Member Special",
-      price: "₹299",
+      price: "₹849",
       period: "per attendee",
       discount: "₹100 saved",
       icon: <Flame className="w-5 h-5 text-athena-gold animate-pulse" />,
@@ -91,7 +91,7 @@ export default function Tickets() {
     {
       name: "Non-IEEE Early Bird Pass",
       tag: "Regular Early Entry",
-      price: "₹399",
+      price: "₹999",
       period: "per attendee",
       discount: "₹100 saved",
       icon: <Sparkles className="w-5 h-5 text-athena-pink" />,
@@ -107,7 +107,7 @@ export default function Tickets() {
     {
       name: "IEEE Pass",
       tag: "IEEE Member Rate",
-      price: "₹399",
+      price: "₹999",
       period: "per attendee",
       icon: <Users className="w-5 h-5 text-athena-pink" />,
       features: sharedFeatures,
@@ -118,7 +118,7 @@ export default function Tickets() {
     {
       name: "Non-IEEE Pass",
       tag: "Standard Entry",
-      price: "₹499",
+      price: "₹1149",
       period: "per attendee",
       icon: <Sparkles className="w-5 h-5 text-athena-gold" />,
       features: sharedFeatures,
@@ -144,24 +144,23 @@ export default function Tickets() {
         </div>
         <button
           onClick={() => setIsSimulatedExpired(!isSimulatedExpired)}
-          className={`px-3 py-1.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider transition-all duration-300 text-white ${
-            isSimulatedExpired
-              ? "bg-red-950/50 border border-red-900/35 hover:bg-red-950/80 text-slate-300"
-              : "bg-gradient-to-r from-athena-crimson to-athena-maroon hover:scale-[1.03] shadow-md shadow-athena-crimson/15"
-          }`}
+          className={`px-3 py-1.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider transition-all duration-300 text-white ${isSimulatedExpired
+            ? "bg-red-950/50 border border-red-900/35 hover:bg-red-950/80 text-slate-300"
+            : "bg-gradient-to-r from-athena-crimson to-athena-maroon hover:scale-[1.03] shadow-md shadow-athena-crimson/15"
+            }`}
         >
           {isSimulatedExpired ? "Reset Timer" : "Expire Timer"}
         </button>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="font-display font-bold text-xs sm:text-sm text-athena-pink tracking-widest uppercase mb-3 block">
             Secure Your Seat
           </span>
-          <h2 className="font-luxury font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-4">
+          <h2 className="font-serif font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-4">
             Choose Your Camp Pass
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold mx-auto rounded-full mb-6" />
@@ -175,11 +174,10 @@ export default function Tickets() {
           <div className="absolute inset-0 bg-gradient-to-r from-athena-crimson/5 to-athena-gold/5 pointer-events-none" />
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
             <div className="flex items-center space-x-3 text-left">
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border ${
-                isExpired 
-                  ? 'bg-rose-950/30 border-rose-900/40 text-rose-500' 
-                  : 'bg-red-950/40 border-red-900/30 text-athena-pink animate-pulse'
-              }`}>
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border ${isExpired
+                ? 'bg-rose-950/30 border-rose-900/40 text-rose-500'
+                : 'bg-red-950/40 border-red-900/30 text-athena-pink animate-pulse'
+                }`}>
                 {isExpired ? <AlertCircle className="w-5 h-5" /> : <Clock className="w-5 h-5" />}
               </div>
               <div>
@@ -191,7 +189,7 @@ export default function Tickets() {
                 </p>
               </div>
             </div>
-            
+
             {/* Countdown Grid */}
             <div className="flex items-center space-x-2">
               {Object.entries(timeLeft).map(([unit, value]) => (
@@ -217,7 +215,7 @@ export default function Tickets() {
               Early Bird Registration
             </h3>
             <p className="font-sans text-xs sm:text-sm text-slate-400 font-semibold">
-              {!isExpired 
+              {!isExpired
                 ? "Get special discounted pricing. Offers available for a limited time."
                 : "Early bird discount passes are now closed."}
             </p>
@@ -232,13 +230,12 @@ export default function Tickets() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 whileHover={!isExpired ? { y: -8 } : {}}
-                className={`relative rounded-3xl overflow-hidden p-[2.5px] flex flex-col h-full group transition-all duration-500 ${
-                  isExpired ? "opacity-40 grayscale-[40%] border border-red-950/40" : pass.borderStyle
-                }`}
+                className={`relative rounded-3xl overflow-hidden p-[2.5px] flex flex-col h-full group transition-all duration-500 ${isExpired ? "opacity-40 grayscale-[40%] border border-red-950/40" : pass.borderStyle
+                  }`}
               >
                 {/* Custom border glow for hover */}
                 {!isExpired && (
-                  <div 
+                  <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none"
                     style={{
                       background: "linear-gradient(135deg, #991b1b, #d4af37)"
@@ -248,7 +245,7 @@ export default function Tickets() {
 
                 {/* Main Card Body */}
                 <div className="relative flex flex-col justify-between h-full bg-[#0e0204]/90 backdrop-blur-md p-8 rounded-[21px] shadow-lg border border-red-950/30">
-                  
+
                   {/* Limited Time Badge */}
                   {!isExpired && (
                     <div className="absolute top-5 right-5 px-3 py-1 rounded-full bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-[10px] font-sans font-extrabold uppercase tracking-widest text-white shadow-md animate-pulse">
@@ -334,11 +331,10 @@ export default function Tickets() {
                       onClick={(e) => {
                         if (isExpired) e.preventDefault();
                       }}
-                      className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${
-                        isExpired
-                          ? "bg-red-950/15 text-slate-500 border border-red-950/40 cursor-not-allowed"
-                          : "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white hover:opacity-95 shadow-md shadow-athena-crimson/25 hover:scale-[1.02]"
-                      }`}
+                      className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${isExpired
+                        ? "bg-red-950/15 text-slate-500 border border-red-950/40 cursor-not-allowed"
+                        : "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white hover:opacity-95 shadow-md shadow-athena-crimson/25 hover:scale-[1.02]"
+                        }`}
                     >
                       <span>{isExpired ? "Registration Closed" : "Register Now"}</span>
                       {!isExpired && <ArrowRight className="w-4 h-4" />}
@@ -367,8 +363,8 @@ export default function Tickets() {
               Standard Registration
             </h3>
             <p className="font-sans text-xs sm:text-sm text-slate-400 font-semibold">
-              {isExpired 
-                ? "Standard registration tickets are now available." 
+              {isExpired
+                ? "Standard registration tickets are now available."
                 : "Standard registrations will open after Early Bird closes."}
             </p>
           </div>
@@ -382,31 +378,28 @@ export default function Tickets() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 whileHover={isExpired ? { y: -8 } : {}}
-                className={`relative rounded-3xl overflow-hidden p-[2.5px] flex flex-col h-full group transition-all duration-550 ${
-                  isExpired 
-                    ? pass.borderStyle 
-                    : "bg-red-950/15 border border-red-950/40 shadow-none pointer-events-none"
-                }`}
+                className={`relative rounded-3xl overflow-hidden p-[2.5px] flex flex-col h-full group transition-all duration-550 ${isExpired
+                  ? pass.borderStyle
+                  : "bg-red-950/15 border border-red-950/40 shadow-none pointer-events-none"
+                  }`}
               >
                 {/* Custom border glow for hover */}
                 {isExpired && (
-                  <div 
+                  <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none"
                     style={{
-                      background: `linear-gradient(135deg, ${
-                        pass.isPopular
-                          ? "#fda4af, #991b1b, #d4af37"
-                          : "#991b1b, #d4af37"
-                      })`
+                      background: `linear-gradient(135deg, ${pass.isPopular
+                        ? "#fda4af, #991b1b, #d4af37"
+                        : "#991b1b, #d4af37"
+                        })`
                     }}
                   />
                 )}
 
                 {/* Main Card Body */}
-                <div className={`relative flex flex-col justify-between h-full bg-[#0e0204]/90 backdrop-blur-md p-8 rounded-[21px] shadow-lg border border-red-950/30 transition-all duration-550 ${
-                  !isExpired ? "blur-[1px] opacity-70" : ""
-                }`}>
-                  
+                <div className={`relative flex flex-col justify-between h-full bg-[#0e0204]/90 backdrop-blur-md p-8 rounded-[21px] shadow-lg border border-red-950/30 transition-all duration-550 ${!isExpired ? "blur-[1px] opacity-70" : ""
+                  }`}>
+
                   {/* Popular Badge */}
                   {pass.isPopular && isExpired && (
                     <div className="absolute top-5 right-5 px-3 py-1 rounded-full bg-gradient-to-r from-athena-pink via-athena-crimson to-athena-gold text-[10px] font-sans font-extrabold uppercase tracking-widest text-white shadow-md">
@@ -461,13 +454,12 @@ export default function Tickets() {
                       onClick={(e) => {
                         if (!isExpired) e.preventDefault();
                       }}
-                      className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${
-                        !isExpired
-                          ? "bg-red-950/15 text-slate-500 border border-red-950/40 cursor-not-allowed"
-                          : pass.isPopular
-                            ? "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white shadow-md shadow-athena-crimson/15 hover:scale-[1.02]"
-                            : "bg-red-950/40 border border-red-900/30 text-slate-100 hover:bg-red-950/50 hover:scale-[1.02]"
-                      }`}
+                      className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${!isExpired
+                        ? "bg-red-950/15 text-slate-500 border border-red-950/40 cursor-not-allowed"
+                        : pass.isPopular
+                          ? "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white shadow-md shadow-athena-crimson/15 hover:scale-[1.02]"
+                          : "bg-red-950/40 border border-red-900/30 text-slate-100 hover:bg-red-950/50 hover:scale-[1.02]"
+                        }`}
                     >
                       <span>Register Now</span>
                       <ArrowRight className="w-4 h-4" />

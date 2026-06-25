@@ -53,7 +53,7 @@ export default function AboutAthena() {
             The First-Ever SHE Camp
           </motion.span>
           <motion.h2
-            className="font-luxury font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-6"
+            className="font-serif font-bold text-3xl sm:text-5xl text-slate-100 tracking-wide mb-6"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
