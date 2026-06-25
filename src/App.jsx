@@ -13,9 +13,20 @@ import Venue from "./components/Venue";
 import Tickets from "./components/Tickets";
 import ComingSoon from "./components/ComingSoon";
 import Footer from "./components/Footer";
+import Toast from "./components/Toast";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [toasts, setToasts] = useState([]);
+
+  const addToast = (message, type = "success") => {
+    const id = Date.now() + Math.random().toString(36).substr(2, 9);
+    setToasts((prev) => [...prev, { id, message, type }]);
+  };
+
+  const removeToast = (id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
 
   return (
     <>
@@ -28,6 +39,9 @@ export default function App() {
         <div className="relative min-h-screen bg-gradient-mesh text-slate-100 selection:bg-athena-purple/30 selection:text-athena-pink">
           {/* Subtle noise grain texture */}
           <div className="grain-overlay" />
+
+          {/* Custom Toast Alerts */}
+          <Toast toasts={toasts} removeToast={removeToast} />
 
           {/* Custom Trailing Mouse Glow */}
           <CursorEffect />
@@ -59,10 +73,10 @@ export default function App() {
             <Venue />
 
             {/* Ticket Card Section */}
-            <Tickets />
+            <Tickets addToast={addToast} />
 
             {/* Coming Soon Updates */}
-            <ComingSoon />
+            <ComingSoon addToast={addToast} />
           </main>
 
           {/* Footer details */}

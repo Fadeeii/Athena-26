@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Flame, Users, Sparkles, ArrowRight, Lock, Clock, AlertCircle } from "lucide-react";
+import RegistrationModal from "./RegistrationModal";
 
 // Get initial target date (June 25, 2026 23:59:59). If it's in the past relative to when the
 // site is opened, we default to 3 days in the future to keep the countdown active for demo purposes.
@@ -13,7 +14,7 @@ const getInitialTargetDate = () => {
   return now + 3 * 24 * 60 * 60 * 1000;
 };
 
-export default function Tickets() {
+export default function Tickets({ addToast }) {
   const targetTime = getInitialTargetDate();
 
   // State for countdown timer
@@ -26,6 +27,16 @@ export default function Tickets() {
 
   const [isEarlyBirdClosed, setIsEarlyBirdClosed] = useState(false);
   const [isSimulatedExpired, setIsSimulatedExpired] = useState(false);
+
+  // Modal States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPass, setSelectedPass] = useState(null);
+
+  const handleRegisterClick = (pass, e) => {
+    e.preventDefault();
+    setSelectedPass(pass);
+    setIsModalOpen(true);
+  };
 
   // Computed state for expiration
   const isExpired = isEarlyBirdClosed || isSimulatedExpired;
@@ -326,19 +337,17 @@ export default function Tickets() {
 
                   {/* Button Container */}
                   <div className="mt-auto">
-                    <a
-                      href={isExpired ? "#" : pass.link}
-                      onClick={(e) => {
-                        if (isExpired) e.preventDefault();
-                      }}
+                    <button
+                      disabled={isExpired}
+                      onClick={(e) => handleRegisterClick(pass, e)}
                       className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${isExpired
                         ? "bg-red-950/15 text-slate-500 border border-red-950/40 cursor-not-allowed"
-                        : "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white hover:opacity-95 shadow-md shadow-athena-crimson/25 hover:scale-[1.02]"
+                        : "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white hover:opacity-95 shadow-md shadow-athena-crimson/25 hover:scale-[1.02] cursor-pointer"
                         }`}
                     >
                       <span>{isExpired ? "Registration Closed" : "Register Now"}</span>
                       {!isExpired && <ArrowRight className="w-4 h-4" />}
-                    </a>
+                    </button>
                   </div>
 
                 </div>
@@ -449,21 +458,19 @@ export default function Tickets() {
 
                   {/* Button Container */}
                   <div className="mt-auto">
-                    <a
-                      href={!isExpired ? "#" : pass.link}
-                      onClick={(e) => {
-                        if (!isExpired) e.preventDefault();
-                      }}
+                    <button
+                      disabled={!isExpired}
+                      onClick={(e) => handleRegisterClick(pass, e)}
                       className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${!isExpired
                         ? "bg-red-950/15 text-slate-500 border border-red-950/40 cursor-not-allowed"
                         : pass.isPopular
-                          ? "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white shadow-md shadow-athena-crimson/15 hover:scale-[1.02]"
-                          : "bg-red-950/40 border border-red-900/30 text-slate-100 hover:bg-red-950/50 hover:scale-[1.02]"
+                          ? "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white shadow-md shadow-athena-crimson/15 hover:scale-[1.02] cursor-pointer"
+                          : "bg-red-950/40 border border-red-900/30 text-slate-100 hover:bg-red-950/50 hover:scale-[1.02] cursor-pointer"
                         }`}
                     >
                       <span>Register Now</span>
                       <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </button>
                   </div>
 
                 </div>
@@ -498,6 +505,18 @@ export default function Tickets() {
         </div>
 
       </div>
+
+      {/* Pass Registration Form Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <RegistrationModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            selectedPass={selectedPass}
+            addToast={addToast}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

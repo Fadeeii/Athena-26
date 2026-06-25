@@ -1,16 +1,54 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Bell, Sparkles, Send, CheckCircle2 } from "lucide-react";
+import { Bell, Sparkles, CheckCircle2, Loader2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
-export default function ComingSoon() {
+export default function ComingSoon({ addToast }) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    setLoading(true);
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateUserId = import.meta.env.VITE_EMAILJS_TEMPLATE_USER_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      user_name: "Interested Attendee",
+      user_email: email,
+      chosen_pass: "Updates & Reveals Subscription",
+      pass_price: "Free Subscription",
+      event_name: "ATHENA 2026",
+      event_dates: "July 25 & 26, 2026",
+      event_venue: "Government Engineering College Kozhikode",
+    };
+
+    if (!serviceId || !templateUserId || !publicKey) {
+      console.warn("EmailJS credentials missing. Simulating notification subscription.");
+      setTimeout(() => {
+        setLoading(false);
+        setSubmitted(true);
+        addToast("Subscribed successfully! You're on the updates notification list.", "success");
+        setEmail("");
+      }, 1500);
+      return;
+    }
+
+    try {
+      await emailjs.send(serviceId, templateUserId, templateParams, publicKey);
       setSubmitted(true);
+      addToast("Subscribed successfully! You're on the updates notification list.", "success");
       setEmail("");
+    } catch (err) {
+      console.error("Subscription dispatch failed:", err);
+      addToast("Failed to subscribe email. Please check network connection.", "error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -93,10 +131,20 @@ export default function ComingSoon() {
                 />
                 <button
                   type="submit"
-                  className="sm:w-auto px-6 py-4 rounded-xl bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold hover:opacity-95 text-white font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-athena-crimson/15"
+                  disabled={loading}
+                  className="sm:w-auto px-6 py-4 rounded-xl bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold hover:opacity-95 text-white font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-athena-crimson/15 disabled:opacity-50 disabled:hover:scale-100"
                 >
-                  <Bell className="w-4 h-4" />
-                  <span>Notify Me</span>
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Subscribing...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Bell className="w-4 h-4" />
+                      <span>Notify Me</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}

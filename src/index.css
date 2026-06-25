@@ -75,6 +75,10 @@
   box-shadow: 0 0 25px rgba(220, 38, 38, 0.2);
 }
 
+@utility map-dark-theme {
+  filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%) saturate(120%);
+}
+
 /* Vibrant gradients text */
 @utility text-gradient-blue {
   background: linear-gradient(135deg, #fda4af 0%, #f43f5e 50%, #991b1b 100%);
