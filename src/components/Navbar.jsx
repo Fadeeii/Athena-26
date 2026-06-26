@@ -23,7 +23,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "About IEEE Malabar", href: "#ieee-malabar" },
+    { name: "About IEEE Malabar Subsection", href: "#ieee-malabar" },
     { name: "About WIE", href: "#wie" },
     { name: "About Program", href: "#about" },
     { name: "Events", href: "#events" },
@@ -33,11 +33,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
           ? "bg-[#0a0102]/95 backdrop-blur-md border-b border-red-950/40 shadow-lg shadow-black/30"
           : "bg-transparent"
-      }`}
+        }`}
     >
       {/* Top Branding Strip */}
       <div className="w-full bg-[#050001]/75 border-b border-red-950/20 py-2 px-6">
