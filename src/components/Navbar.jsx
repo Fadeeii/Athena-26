@@ -61,7 +61,7 @@ export default function Navbar() {
               href="#wie"
               className="text-[10px] sm:text-xs font-sans tracking-widest text-slate-300 hover:text-white font-bold uppercase transition-colors"
             >
-              WIE AG
+              WIE
             </a>
           </div>
         </div>
