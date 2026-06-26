@@ -159,7 +159,9 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
             <a
-              href="#tickets"
+              href="https://snaptiqz.com/event/athena"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold hover:opacity-95 text-white font-display font-bold text-base tracking-wider uppercase shadow-lg shadow-athena-crimson/25 hover:shadow-athena-gold/30 hover:scale-105 active:scale-95 transition-all duration-300 text-center border-b-2 border-white/20"
             >
               Register Now

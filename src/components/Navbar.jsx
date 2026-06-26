@@ -97,7 +97,9 @@ export default function Navbar() {
         {/* Desktop CTA Button */}
         <div className="hidden lg:flex items-center">
           <a
-            href="#tickets"
+            href="https://snaptiqz.com/event/athena"
+            target="_blank"
+            rel="noopener noreferrer"
             className="glass hover:bg-red-950/20 text-slate-200 hover:text-white font-display font-bold text-xs tracking-wider uppercase px-5 py-2.5 rounded-full flex items-center space-x-1.5 transition-all duration-300 hover:scale-105 border border-red-900/40 hover:border-athena-pink/55 hover:shadow-lg hover:shadow-athena-pink/10"
           >
             <span>Register Now</span>
@@ -148,7 +150,9 @@ export default function Navbar() {
                 className="pt-4 border-t border-red-950/30 flex flex-col space-y-4"
               >
                 <a
-                  href="#tickets"
+                  href="https://snaptiqz.com/event/athena"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
                   className="w-full justify-center bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white font-display font-bold text-sm tracking-wider uppercase py-3 rounded-xl flex items-center space-x-1.5 transition-all duration-300 shadow-lg shadow-athena-crimson/15"
                 >
