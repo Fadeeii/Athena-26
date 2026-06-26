@@ -53,9 +53,9 @@ export default function ComingSoon({ addToast }) {
   };
 
   const upcomingUpdates = [
-    { title: "Detailed Speaker Reveal", date: "Coming Early July" },
-    { title: "Detailed Agenda & Timeline", date: "Coming Mid July" },
-    { title: "Technical Tools & Prerequisites", date: "Coming Mid July" },
+    { title: "Detailed Speaker Reveal" },
+    { title: "Detailed Agenda & Timeline" },
+    { title: "Technical Tools & Prerequisites" },
   ];
 
   return (
