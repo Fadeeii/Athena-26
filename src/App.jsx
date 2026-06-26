@@ -11,7 +11,7 @@ import AboutAthena from "./components/AboutAthena";
 import Events from "./components/Events";
 import Venue from "./components/Venue";
 import Tickets from "./components/Tickets";
-import Sponsors from "./components/Sponsors";
+
 import ComingSoon from "./components/ComingSoon";
 import Footer from "./components/Footer";
 import Toast from "./components/Toast";
@@ -75,9 +75,6 @@ export default function App() {
 
             {/* Ticket Card Section */}
             <Tickets addToast={addToast} />
-
-            {/* Partners & Sponsors Section */}
-            <Sponsors />
 
             {/* Coming Soon Updates */}
             <ComingSoon addToast={addToast} />
