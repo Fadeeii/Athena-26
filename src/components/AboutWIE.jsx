@@ -30,7 +30,7 @@ export default function AboutWIE() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="font-serif font-bold text-3xl sm:text-5xl lg:text-6xl text-slate-100 tracking-wide mb-6"
           >
-            WIE AG IEEE Malabar Subsection
+            WIE IEEE Malabar Subsection
           </motion.h2>
 
           <motion.div

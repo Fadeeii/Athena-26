@@ -53,7 +53,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="font-sans text-slate-400 text-sm leading-relaxed mb-6 max-w-sm font-medium">
-              The first ever SHE Camp organized by WIE AG IEEE Malabar Subsection. Promoting technical excellence, professional mentorship, leadership growth, and creative confidence in women.
+              The first ever SHE Camp organized by WIE IEEE Malabar Subsection. Promoting technical excellence, professional mentorship, leadership growth, and creative confidence in women.
             </p>
             <div className="flex space-x-4">
               <a
@@ -113,7 +113,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#wie" className="hover:text-white transition-colors duration-200">
-                  About WIE AG
+                  About WIE
                 </a>
               </li>
               <li>
@@ -140,7 +140,7 @@ export default function Footer() {
                 <div>
                   <span className="block text-xs text-slate-500 font-bold uppercase">Email</span>
                   <a href="mailto:wie.malabar@ieee.org" className="hover:text-white transition-colors duration-200 font-medium">
-                    wie.malabar@ieee.org
+                    msswieathena26@gmail.com
                   </a>
                 </div>
               </li>
@@ -178,7 +178,7 @@ export default function Footer() {
             <div className="font-sans text-xs text-slate-500 font-semibold">
               &copy; {new Date().getFullYear()} ATHENA 2026. All rights reserved. Organized by WIE AG IEEE Malabar Subsection.
             </div>
-            
+
             {/* Compliant Logo Bar at the bottom */}
             <div className="flex items-center space-x-4 pt-3 opacity-90 hover:opacity-100 transition-opacity duration-300">
               <div className="flex items-center space-x-4 bg-white px-5 py-2.5 rounded-full border border-slate-200/30 shadow-md">
