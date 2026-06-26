@@ -67,7 +67,7 @@ export default function AboutWIE() {
                 IEEE Women in Engineering (WIE) is one of the largest global professional networks dedicated to promoting women engineers and scientists, inspiring girls worldwide to follow their academic interests in STEM fields.
               </p>
               <p className="font-sans text-slate-400 text-sm sm:text-base leading-relaxed max-w-3xl">
-                The Malabar Subsection Affinity Group carries this torch by organising interactive summits, tech camps, and awareness projects. We are dedicated to creating an inclusive ecosystem where women can innovate, lead, and thrive in tech.
+                The Malabar Subsection carries this torch by organising interactive summits, tech camps, and awareness projects. We are dedicated to creating an inclusive ecosystem where women can innovate, lead, and thrive in tech.
               </p>
             </div>
           </motion.div>
