@@ -66,7 +66,7 @@ export default function LoadingScreen({ onComplete }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          WIE AG IEEE Malabar Subsection
+          WIE IEEE Malabar Subsection
         </motion.p>
 
         {/* Progress Bar Container */}

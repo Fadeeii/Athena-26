@@ -20,7 +20,7 @@ export default function AboutWIE() {
             transition={{ duration: 0.6 }}
             className="font-display font-bold text-xs sm:text-sm text-athena-pink tracking-widest uppercase mb-4 block"
           >
-            Affinity Group
+
           </motion.span>
 
           <motion.h2

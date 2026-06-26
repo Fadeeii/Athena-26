@@ -21,12 +21,6 @@ const LinkedinIcon = (props) => (
   </svg>
 );
 
-const TwitterIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-  </svg>
-);
-
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -57,7 +51,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ieeemalabarsubsection/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-red-950/20 hover:bg-red-950/40 flex items-center justify-center border border-red-950/50 hover:border-athena-pink/40 text-slate-350 shadow-sm transition-all duration-300"
@@ -66,7 +60,7 @@ export default function Footer() {
                 <InstagramIcon className="w-4 h-4 text-athena-pink" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/ieee-mss/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-red-950/20 hover:bg-red-950/40 flex items-center justify-center border border-red-950/50 hover:border-athena-blue/40 text-slate-350 shadow-sm transition-all duration-300"
@@ -75,16 +69,7 @@ export default function Footer() {
                 <LinkedinIcon className="w-4 h-4 text-rose-400" />
               </a>
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-red-950/20 hover:bg-red-950/40 flex items-center justify-center border border-red-950/50 hover:border-athena-purple/40 text-slate-350 shadow-sm transition-all duration-300"
-                aria-label="Twitter"
-              >
-                <TwitterIcon className="w-4 h-4 text-athena-pink" />
-              </a>
-              <a
-                href="https://kerala.ieee.org"
+                href="site.ieee.org/malabar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-red-950/20 hover:bg-red-950/40 flex items-center justify-center border border-red-950/50 hover:border-yellow-500/40 text-slate-350 shadow-sm transition-all duration-300"
@@ -176,7 +161,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col space-y-2 text-left w-full md:w-auto">
             <div className="font-sans text-xs text-slate-500 font-semibold">
-              &copy; {new Date().getFullYear()} ATHENA 2026. All rights reserved. Organized by WIE AG IEEE Malabar Subsection.
+              &copy; {new Date().getFullYear()} ATHENA 2026. All rights reserved. Organized by WIE IEEE Malabar Subsection.
             </div>
 
             {/* Compliant Logo Bar at the bottom */}

@@ -53,7 +53,7 @@ export default function Tickets({ addToast }) {
     {
       name: "IEEE Pass",
       tag: "IEEE Member Rate",
-      price: "₹999",
+      price: "₹₹₹",
       period: "per attendee",
       icon: <Users className="w-5 h-5 text-athena-pink" />,
       features: sharedFeatures,
@@ -64,7 +64,7 @@ export default function Tickets({ addToast }) {
     {
       name: "Non-IEEE Pass",
       tag: "Standard Entry",
-      price: "₹1149",
+      price: "₹₹₹",
       period: "per attendee",
       icon: <Sparkles className="w-5 h-5 text-athena-gold" />,
       features: sharedFeatures,
