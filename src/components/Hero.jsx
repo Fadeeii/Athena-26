@@ -2,6 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, Calendar, MapPin } from "lucide-react";
 import gecKoz from "../assets/gec_koz.jpg";
+import wieLogo from "../assets/wie_logo.svg";
+import ieeeLogo from "../assets/ieee_logo.svg";
+import ieeeMalabarLogo from "../assets/ieee_malabar_logo.svg";
 
 export default function Hero() {
   const containerVariants = {
@@ -82,15 +85,40 @@ export default function Hero() {
           animate="visible"
           className="flex flex-col items-center"
         >
-          {/* Subsection Tag */}
+          {/* Official Branding Pill */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center space-x-2 px-5 py-2 rounded-full glass border border-red-900/30 mb-6 hover:border-athena-pink/40 hover:shadow-lg hover:shadow-athena-pink/5 transition-all duration-300 bg-red-950/20"
+            className="flex items-center space-x-4 sm:space-x-5 bg-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-slate-200/30 shadow-xl shadow-black/35 mb-8 hover:scale-105 transition-transform duration-300"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-athena-crimson animate-pulse shadow-sm shadow-athena-crimson" />
-            <span className="font-sans text-xs sm:text-sm font-bold tracking-wider text-slate-300 uppercase">
-              WIE AG IEEE Malabar Subsection
-            </span>
+            <a
+              href="https://ieee.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="IEEE Website"
+              className="flex items-center"
+            >
+              <img src={ieeeLogo} alt="IEEE Logo" className="h-6 sm:h-7.5 w-auto object-contain" />
+            </a>
+            <span className="w-[1px] h-4 sm:h-5 bg-slate-300" />
+            <a
+              href="https://wie.ieee.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="IEEE WIE Website"
+              className="flex items-center"
+            >
+              <div className="w-6.5 sm:w-7.5 h-6.5 sm:h-7.5 rounded-full overflow-hidden flex items-center justify-center">
+                <img src={wieLogo} alt="IEEE WIE Logo" className="w-full h-full object-contain" />
+              </div>
+            </a>
+            <span className="w-[1px] h-4 sm:h-5 bg-slate-300" />
+            <a
+              href="#ieee-malabar"
+              aria-label="IEEE Malabar Subsection"
+              className="flex items-center"
+            >
+              <img src={ieeeMalabarLogo} alt="IEEE Malabar Subsection Logo" className="h-6.5 sm:h-7.5 w-auto object-contain" />
+            </a>
           </motion.div>
 
           {/* Large Title */}

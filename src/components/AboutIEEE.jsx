@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Globe, Users, Trophy, Award } from "lucide-react";
+import ieeeMalabarLogo from "../assets/ieee_malabar_logo.svg";
 
 export default function AboutIEEE() {
   const cards = [
@@ -45,6 +46,13 @@ export default function AboutIEEE() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
+            <div className="mb-6 inline-block bg-white p-4 rounded-2xl border border-white/20 shadow-lg shadow-black/35 hover:scale-105 transition-transform duration-300">
+              <img
+                src={ieeeMalabarLogo}
+                alt="IEEE Malabar Subsection Logo"
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
+            </div>
             <h2 className="font-serif font-extrabold text-3xl sm:text-5xl text-slate-100 tracking-wide leading-tight mb-6">
               About IEEE Malabar Subsection
             </h2>

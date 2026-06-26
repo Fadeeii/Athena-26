@@ -68,7 +68,7 @@ export default function AboutAthena() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            ATHENA 2026 is the first-ever SHE Camp organized by WIE AG IEEE Malabar Subsection, bringing together aspiring women innovators, leaders, creators, and changemakers for two unforgettable days of learning, networking, creativity, empowerment, and inspiration.
+            ATHENA'26 is a two-day residential SHE Camp designed to provide female engineering students with opportunities to strengthen their technical knowledge, leadership capabilities, and professional outlook. The program aims to encourage greater participation of women in engineering and technology through technical workshops, keynote talks, panel discussions, networking sessions, and cultural activities. By bringing together students with experienced professionals, researchers, academicians, healthcare experts, and IEEE volunteers, ATHENA'26 seeks to foster technical excellence, mentorship, collaboration, and holistic development while building a strong community of future women leaders in STEM.
           </motion.p>
         </div>
 

@@ -1,5 +1,8 @@
 import React from "react";
 import { Mail, Phone, MapPin, Globe, ArrowUp } from "lucide-react";
+import wieLogo from "../assets/wie_logo.svg";
+import ieeeMalabarLogo from "../assets/ieee_malabar_logo.svg";
+import ieeeLogo from "../assets/ieee_logo.svg";
 
 // Custom SVG Brand Icons since Lucide v1.x deprecated them
 const InstagramIcon = (props) => (
@@ -170,9 +173,46 @@ export default function Footer() {
         <div className="w-full h-[1px] bg-red-950/30 mb-8" />
 
         {/* Bottom Line */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-left font-sans text-xs text-slate-500 font-semibold">
-            &copy; {new Date().getFullYear()} ATHENA 2026. All rights reserved. Organized by WIE AG IEEE Malabar Subsection.
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col space-y-2 text-left w-full md:w-auto">
+            <div className="font-sans text-xs text-slate-500 font-semibold">
+              &copy; {new Date().getFullYear()} ATHENA 2026. All rights reserved. Organized by WIE AG IEEE Malabar Subsection.
+            </div>
+            
+            {/* Compliant Logo Bar at the bottom */}
+            <div className="flex items-center space-x-4 pt-3 opacity-90 hover:opacity-100 transition-opacity duration-300">
+              <div className="flex items-center space-x-4 bg-white px-5 py-2.5 rounded-full border border-slate-200/30 shadow-md">
+                <a
+                  href="https://ieee.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="IEEE Website"
+                  className="flex items-center hover:scale-105 transition-transform duration-200"
+                >
+                  <img src={ieeeLogo} alt="IEEE Logo" className="h-5 w-auto object-contain" />
+                </a>
+                <span className="w-[1px] h-4 bg-slate-300" />
+                <a
+                  href="https://wie.ieee.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="IEEE WIE Website"
+                  className="flex items-center hover:scale-105 transition-transform duration-200"
+                >
+                  <div className="w-5.5 h-5.5 rounded-full overflow-hidden flex items-center justify-center">
+                    <img src={wieLogo} alt="IEEE WIE Logo" className="w-full h-full object-contain" />
+                  </div>
+                </a>
+                <span className="w-[1px] h-4 bg-slate-300" />
+                <a
+                  href="#ieee-malabar"
+                  aria-label="IEEE Malabar Subsection"
+                  className="flex items-center hover:scale-105 transition-transform duration-200"
+                >
+                  <img src={ieeeMalabarLogo} alt="IEEE Malabar Subsection Logo" className="h-5 w-auto object-contain" />
+                </a>
+              </div>
+            </div>
           </div>
 
           <button

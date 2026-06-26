@@ -15,7 +15,7 @@ const getInitialTargetDate = () => {
 };
 
 export default function Tickets({ addToast }) {
-  const targetTime = getInitialTargetDate();
+  const [targetTime] = useState(() => getInitialTargetDate());
 
   // State for countdown timer
   const [timeLeft, setTimeLeft] = useState({

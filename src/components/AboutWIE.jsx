@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import wieLogo from "../assets/wie_logo.svg";
 
 export default function AboutWIE() {
   return (
@@ -55,6 +56,13 @@ export default function AboutWIE() {
 
             {/* Main content body inside card */}
             <div className="relative bg-gradient-to-br from-red-950/25 via-[#0e0204] to-red-950/15 p-8 sm:p-12 rounded-[22px] text-center flex flex-col items-center">
+              <div className="mb-8 bg-white rounded-full border border-white/20 shadow-lg shadow-black/35 w-24 h-24 flex items-center justify-center overflow-hidden hover:scale-105 transition-transform duration-300">
+                <img
+                  src={wieLogo}
+                  alt="WIE Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <p className="font-sans text-slate-200 text-base sm:text-lg leading-relaxed mb-6 font-semibold max-w-3xl">
                 IEEE Women in Engineering (WIE) is one of the largest global professional networks dedicated to promoting women engineers and scientists, inspiring girls worldwide to follow their academic interests in STEM fields.
               </p>
