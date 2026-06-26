@@ -69,11 +69,11 @@ export default function Footer() {
                 <LinkedinIcon className="w-4 h-4 text-rose-400" />
               </a>
               <a
-                href="site.ieee.org/malabar"
+                href="https://site.ieee.org/malabar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-red-950/20 hover:bg-red-950/40 flex items-center justify-center border border-red-950/50 hover:border-yellow-500/40 text-slate-350 shadow-sm transition-all duration-300"
-                aria-label="IEEE Website"
+                className="w-9 h-9 rounded-lg bg-red-950/20 hover:bg-athena-gold/15 flex items-center justify-center border border-red-950/50 hover:border-athena-gold/50 text-slate-350 shadow-sm hover:shadow-md hover:shadow-athena-gold/10 transition-all duration-300 hover:scale-105"
+                aria-label="IEEE Malabar Subsection Website"
               >
                 <Globe className="w-4 h-4 text-athena-gold" />
               </a>
