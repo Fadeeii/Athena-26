@@ -28,6 +28,7 @@ export default function Navbar() {
     { name: "About Program", href: "#about" },
     { name: "Events", href: "#events" },
     { name: "Tickets", href: "#tickets" },
+    { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
   ];
 

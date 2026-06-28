@@ -1,15 +1,122 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Flame, Users, Sparkles, ArrowRight, Lock } from "lucide-react";
+import { Check, Flame, Users, Sparkles, ArrowRight, Lock, Clock, CalendarDays } from "lucide-react";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MANUAL REGISTRATION CONTROL
-// Set to `true`  → Early Bird is active, Standard is locked
-// Set to `false` → Standard is active, Early Bird is closed
+// REGISTRATION TIMING CONFIGURATION
+// Early Bird closes: TODAY at 22:30 (10:30 PM) local timezone
+// Standard Registration opens: July 1, local timezone
 // ─────────────────────────────────────────────────────────────────────────────
-const earlyBirdActive = true;
+
+function getEarlyBirdDeadline() {
+  const now = new Date();
+  const deadline = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 22, 30, 0, 0);
+  return deadline;
+}
+
+function getStandardOpenDate() {
+  const now = new Date();
+  return new Date(now.getFullYear(), 6, 1, 0, 0, 0, 0); // July 1 (month 6 = July)
+}
+
+function computeTimeLeft(deadline) {
+  const now = new Date();
+  const diff = deadline.getTime() - now.getTime();
+  if (diff <= 0) return null;
+
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  return { hours, minutes, seconds, total: diff };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COUNTDOWN DIGIT COMPONENT — Premium flip-style digit with label
+// ─────────────────────────────────────────────────────────────────────────────
+
+function CountdownUnit({ value, label }) {
+  const display = String(value).padStart(2, "0");
+  return (
+    <div className="flex flex-col items-center">
+      <div className="relative w-16 sm:w-20 h-16 sm:h-20 rounded-2xl bg-[#0e0204]/80 border border-red-900/30 backdrop-blur-md flex items-center justify-center shadow-lg shadow-athena-crimson/10 overflow-hidden">
+        {/* Subtle inner glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-athena-crimson/5 to-transparent pointer-events-none" />
+        <AnimatePresence mode="popLayout">
+          <motion.span
+            key={value}
+            initial={{ y: 12, opacity: 0, filter: "blur(4px)" }}
+            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+            exit={{ y: -12, opacity: 0, filter: "blur(4px)" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="font-display font-black text-3xl sm:text-4xl text-slate-100 relative z-10"
+          >
+            {display}
+          </motion.span>
+        </AnimatePresence>
+        {/* Center divider line */}
+        <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-red-950/20 pointer-events-none" />
+      </div>
+      <span className="font-sans font-bold text-[10px] sm:text-xs text-slate-500 uppercase tracking-widest mt-2">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function CountdownSeparator() {
+  return (
+    <div className="flex flex-col items-center justify-center h-16 sm:h-20 px-1">
+      <motion.div
+        animate={{ opacity: [1, 0.3, 1] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        className="flex flex-col space-y-2"
+      >
+        <div className="w-1.5 h-1.5 rounded-full bg-athena-crimson/60" />
+        <div className="w-1.5 h-1.5 rounded-full bg-athena-crimson/60" />
+      </motion.div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MAIN TICKETS COMPONENT
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Tickets({ addToast }) {
+  const [earlyBirdDeadline] = useState(() => getEarlyBirdDeadline());
+  const [standardOpenDate] = useState(() => getStandardOpenDate());
+  const [timeLeft, setTimeLeft] = useState(() => computeTimeLeft(getEarlyBirdDeadline()));
+  const [earlyBirdActive, setEarlyBirdActive] = useState(() => {
+    const now = new Date();
+    return now < getEarlyBirdDeadline();
+  });
+  const [standardActive, setStandardActive] = useState(() => {
+    const now = new Date();
+    return now >= getStandardOpenDate();
+  });
+
+  // Tick every second
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const ebActive = now < earlyBirdDeadline;
+      const stdActive = now >= standardOpenDate;
+
+      setEarlyBirdActive(ebActive);
+      setStandardActive(stdActive);
+
+      if (ebActive) {
+        setTimeLeft(computeTimeLeft(earlyBirdDeadline));
+      } else {
+        setTimeLeft(null);
+      }
+    };
+
+    tick(); // run immediately
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [earlyBirdDeadline, standardOpenDate]);
 
   // Features list shared across passes
   const sharedFeatures = [
@@ -75,6 +182,12 @@ export default function Tickets({ addToast }) {
     }
   ];
 
+  // Format standard open date for display
+  const standardOpenLabel = standardOpenDate.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <section id="tickets" className="py-24 relative overflow-hidden bg-transparent">
       {/* Background radial glow */}
@@ -111,7 +224,57 @@ export default function Tickets({ addToast }) {
             </p>
           </div>
 
-          {/* Early Bird Status Badge */}
+          {/* ─── Countdown Timer (only while Early Bird is active) ─── */}
+          <AnimatePresence mode="wait">
+            {earlyBirdActive && timeLeft && (
+              <motion.div
+                key="countdown"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20, transition: { duration: 0.5 } }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex flex-col items-center mb-12"
+              >
+                {/* Timer label */}
+                <div className="flex items-center space-x-2 mb-5">
+                  <Clock className="w-4 h-4 text-athena-gold/70" />
+                  <span className="font-sans font-bold text-xs text-slate-400 uppercase tracking-widest">
+                    Early Bird Ends In
+                  </span>
+                </div>
+
+                {/* Timer digits */}
+                <div className="flex items-start space-x-2 sm:space-x-3">
+                  <CountdownUnit value={timeLeft.hours} label="Hours" />
+                  <CountdownSeparator />
+                  <CountdownUnit value={timeLeft.minutes} label="Minutes" />
+                  <CountdownSeparator />
+                  <CountdownUnit value={timeLeft.seconds} label="Seconds" />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* ─── "Registration Closed" banner (after Early Bird ends) ─── */}
+          <AnimatePresence>
+            {!earlyBirdActive && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex justify-center mb-10"
+              >
+                <div className="inline-flex items-center space-x-2.5 px-6 py-3 rounded-full bg-red-950/20 border border-red-900/30 shadow-lg">
+                  <Lock className="w-4 h-4 text-slate-500" />
+                  <span className="font-display font-bold text-xs uppercase tracking-widest text-slate-400">
+                    Early Bird Registration Closed
+                  </span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Early Bird Live Badge (shown while active) */}
           {earlyBirdActive && (
             <div className="flex justify-center mb-10">
               <motion.div
@@ -131,6 +294,7 @@ export default function Tickets({ addToast }) {
             </div>
           )}
 
+          {/* Early Bird Cards */}
           <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
             {earlyBirdPasses.map((pass, idx) => (
               <motion.div
@@ -250,11 +414,31 @@ export default function Tickets({ addToast }) {
               Standard Registration
             </h3>
             <p className="font-sans text-xs sm:text-sm text-slate-400 font-semibold">
-              {!earlyBirdActive
+              {standardActive
                 ? "Standard registration tickets are now available."
-                : "Standard registrations will open soon."}
+                : `Standard registrations open ${standardOpenLabel}.`}
             </p>
           </div>
+
+          {/* Standard Registration status banner */}
+          <AnimatePresence>
+            {!standardActive && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.4 } }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex justify-center mb-10"
+              >
+                <div className="inline-flex items-center space-x-2.5 px-6 py-3 rounded-full bg-red-950/15 border border-red-900/25 shadow-lg">
+                  <CalendarDays className="w-4 h-4 text-athena-gold/60" />
+                  <span className="font-display font-bold text-xs uppercase tracking-widest text-slate-400">
+                    Standard Registration Opens {standardOpenLabel}
+                  </span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto relative">
             {standardPasses.map((pass, idx) => (
@@ -264,14 +448,14 @@ export default function Tickets({ addToast }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                whileHover={!earlyBirdActive ? { y: -8 } : {}}
-                className={`relative rounded-3xl overflow-hidden p-[2.5px] flex flex-col h-full group transition-all duration-550 ${!earlyBirdActive
+                whileHover={standardActive ? { y: -8 } : {}}
+                className={`relative rounded-3xl overflow-hidden p-[2.5px] flex flex-col h-full group transition-all duration-550 ${standardActive
                   ? pass.borderStyle
                   : "bg-red-950/15 border border-red-950/40 shadow-none pointer-events-none"
                   }`}
               >
                 {/* Custom border glow for hover */}
-                {!earlyBirdActive && (
+                {standardActive && (
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none"
                     style={{
@@ -284,11 +468,11 @@ export default function Tickets({ addToast }) {
                 )}
 
                 {/* Main Card Body */}
-                <div className={`relative flex flex-col justify-between h-full bg-[#0e0204]/90 backdrop-blur-md p-8 rounded-[21px] shadow-lg border border-red-950/30 transition-all duration-550 ${earlyBirdActive ? "blur-[1px] opacity-70" : ""
+                <div className={`relative flex flex-col justify-between h-full bg-[#0e0204]/90 backdrop-blur-md p-8 rounded-[21px] shadow-lg border border-red-950/30 transition-all duration-550 ${!standardActive ? "blur-[1px] opacity-70" : ""
                   }`}>
 
                   {/* Popular Badge */}
-                  {pass.isPopular && !earlyBirdActive && (
+                  {pass.isPopular && standardActive && (
                     <div className="absolute top-5 right-5 px-3 py-1 rounded-full bg-gradient-to-r from-athena-pink via-athena-crimson to-athena-gold text-[10px] font-sans font-extrabold uppercase tracking-widest text-white shadow-md">
                       Most Popular
                     </div>
@@ -337,18 +521,18 @@ export default function Tickets({ addToast }) {
                   {/* Button Container */}
                   <div className="mt-auto">
                     <a
-                      href={!earlyBirdActive ? "https://snaptiqz.com/event/athena" : undefined}
+                      href={standardActive ? "https://snaptiqz.com/event/athena" : undefined}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${earlyBirdActive
+                      className={`w-full py-4 px-6 rounded-xl font-display font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 ${!standardActive
                         ? "bg-red-950/15 text-slate-500 border border-red-950/40 cursor-not-allowed pointer-events-none"
                         : pass.isPopular
                           ? "bg-gradient-to-r from-athena-crimson via-athena-maroon to-athena-gold text-white shadow-md shadow-athena-crimson/15 hover:scale-[1.02] cursor-pointer"
                           : "bg-red-950/40 border border-red-900/30 text-slate-100 hover:bg-red-950/50 hover:scale-[1.02] cursor-pointer"
                         }`}
                     >
-                      <span>Register Now</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <span>{standardActive ? "Register Now" : "Coming Soon"}</span>
+                      {standardActive && <ArrowRight className="w-4 h-4" />}
                     </a>
                   </div>
 
@@ -356,7 +540,7 @@ export default function Tickets({ addToast }) {
 
                 {/* Lock Overlay Layer */}
                 <AnimatePresence>
-                  {earlyBirdActive && (
+                  {!standardActive && (
                     <motion.div
                       initial={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -373,7 +557,7 @@ export default function Tickets({ addToast }) {
                       </motion.div>
                       <span className="font-display font-black text-sm text-slate-100 block mb-1">Standard Pass Locked</span>
                       <span className="font-sans text-[11px] text-slate-350 font-bold max-w-[200px] leading-relaxed">
-                        Standard registrations will open soon.
+                        Standard Registration Opens {standardOpenLabel}
                       </span>
                     </motion.div>
                   )}
