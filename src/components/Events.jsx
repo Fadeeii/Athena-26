@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Cpu, Palette, Shield, MessageSquare, Volume2, Film, Music,
+  Palette, Shield, MessageSquare, Volume2, Film, Music,
   Sparkles, X, ArrowRight, Star, Mic2, PaintBucket, Swords,
   PartyPopper, Popcorn, Award, GlassWater,
 } from "lucide-react";
@@ -27,7 +27,7 @@ const events = [
   },
   {
     icon: Mic2,
-    title: "Tech Talk",
+    title: "Technical Workshop",
     subtitle: "Artificial Intelligence: Applications, Opportunities & Future Directions",
     badge: "Featured Tech Session",
     shortDesc: "Explore the evolving world of AI — its real-world applications, emerging opportunities, and the future it is shaping.",
@@ -40,20 +40,7 @@ const events = [
     badgeGradient: "from-indigo-500/15 to-athena-crimson/10 border-indigo-400/25",
     badgeText: "text-indigo-300",
   },
-  {
-    icon: Cpu,
-    title: "Technical Workshop",
-    badge: "Tech",
-    shortDesc: "Hands-on labs exploring emerging frameworks, tools, and technologies led by industry experts.",
-    fullDesc: "Our Technical Workshops are designed to go beyond lectures. Get your hands dirty with real code, real frameworks, and real projects. Led by experienced practitioners, each workshop delivers practical skills you can apply immediately — from modern web frameworks to emerging paradigms in computing.",
-    speakers: null,
-    featuring: null,
-    accentFrom: "#f43f5e",
-    accentTo: "#991b1b",
-    glowColor: "rgba(244, 63, 94, 0.10)",
-    badgeGradient: "from-athena-pink/15 to-athena-crimson/10 border-athena-pink/25",
-    badgeText: "text-athena-pink",
-  },
+
   {
     icon: Volume2,
     title: "Talk Session",
@@ -437,9 +424,9 @@ export default function Events() {
           </p>
         </div>
 
-        {/* Events Grid — top row 5 columns, bottom row 5 columns */}
+        {/* Events Grid — 3 columns on desktop, balanced 3×3 */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

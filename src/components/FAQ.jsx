@@ -27,10 +27,7 @@ const faqs = [
     q: "Is refund available after registration?",
     a: "No, registration fees are non-refundable.",
   },
-  {
-    q: "What should participants bring to the camp?",
-    a: "Participants are advised to carry their college ID card, essential personal items, and comfortable clothing.",
-  },
+
   {
     q: "Will participants receive certificates?",
     a: "Yes, participation certificates will be provided on successful completion of camp.",
@@ -47,10 +44,7 @@ const faqs = [
     q: "Can participants attend only selected sessions?",
     a: "No, all sessions are included in the registration.",
   },
-  {
-    q: "Will there be overnight stay arrangements?",
-    a: "Yes, overnight accommodation arrangements will be available.",
-  },
+
   {
     q: "How can I contact the organizers for queries?",
     a: "Participants can use the contact section on the website or reach out through official ATHENA social media handles.",
